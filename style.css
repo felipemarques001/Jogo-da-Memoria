@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Righteous', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c7cdd3;
+}
+        /* customing the game board */
+#gameBoard{
+    max-width: 700px;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+/* This class will be added by javascript */
+.noClick{
+    pointer-events: none;
+}
+
+        /* customizing the cards */
+.card{
+    width: 120px;
+    height: 120px;
+    position: relative;
+
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+.card_front, .card_back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    backface-visibility: hidden; /* Faz com que qualquer conteúdo invertido seja escondido. */
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
+}
+.flip{
+    transform: rotateY(180deg);
+}
+.card_front{
+    transform: rotateY(180deg);
+    background-color: #101c2c;
+}
+.card_back{
+    color: #101c2c;
+    background-color: #05c3ff;
+    font-size: 30px;
+    
+}
+
+/* QUANDO O JOGADOR VENCER */
+#gameOver{
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.9);
+    color: ghostwhite;
+    font-size: 35px;
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+}
+#restart{
+    padding: 20px;
+    margin-top: 15px;
+    font-size: 20px;
+
+    background-color: yellow;
+    color: #1c1c1c;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#restart:hover{
+    padding: 22px;
+    font-size: 18px;
+}
+@media(max-width: 600px){
+    #gameBoard{
+        max-width: 100vw;
+        max-height: 100vh;
+        display: grid;
+        grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+        gap: 10px;
+    }
+    .card{
+        width: 20vw;
+        height: 15vh;
+    }
+    .card_front img{
+        width: 80%;
+    }
+    .card_back{
+        font-size: 20px;   
+    }
+
+    #gameOver{
+        font-size: 25px;
+    }
+    #restart{
+        padding: 16px;
+        margin-top: 15px;
+        font-size: 18px
+    }
+    #restart:hover{
+        padding: 18px;
+        font-size: 20px;
+    }
+}
